@@ -1,4 +1,4 @@
-// Zhipu GLM (余额) 查询脚本
+// Zhipu GLM 余额查询脚本
 // 参考官网页面: https://bigmodel.cn/finance-center/finance/overview
 // [请求: query-customer-account-report]
 ;({
@@ -18,7 +18,7 @@
       return {
         isValid: false,
         invalidMessage: errorMessage,
-        planName: 'Zhipu GLM (余额)',
+        planName: 'Zhipu GLM',
         extra: errorMessage,
       }
     }
@@ -55,7 +55,7 @@
       `信用余额：${creditBalance ?? resolveLabel(LABEL_MAP.creditStatus, creditStatus)}。`
 
     return {
-      planName: 'Zhipu GLM (余额)',
+      planName: 'Zhipu GLM',
       remaining,
       total: undefined,
       used: undefined,

@@ -4,41 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余额和资源包使用情况。脚本以 Node.js 模块形式导出，被 cc-switch 应用加载执行。
+AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余额和资源包使用情况。脚本以 JavaScript 对象字面量表达式形式编写，由 cc-switch 在 QuickJS 沙箱环境中加载并执行。
 
 ## Script Specification
 
-所有查询脚本导出统一结构的对象：
+所有查询脚本导出统一结构的对象（必须用 `()` 包裹，形成对象字面量表达式）：
 
 ```js
 ;({
   request: {
-    url: 'https://api.example.com/balance',
-    method: 'GET',
+    url: '{{baseUrl}}/api/usage',
+    method: 'POST',
     headers: {
       Authorization: 'Bearer {{apiKey}}',
       'User-Agent': 'cc-switch/1.0',
     },
   },
   extractor(response) {
-    // 解析响应，返回标准化的用量数据
-    return [
-      /* 一个或多个套餐对象 */
-    ]
+    return {
+      isValid: !response.error,
+      remaining: response.balance,
+      unit: 'USD',
+    }
   },
 })
 ```
 
-Extractor 返回的每个套餐对象格式：
+**变量替换**：`{{apiKey}}` 和 `{{baseUrl}}` 会在运行时自动替换。
 
-- `planName`: 套餐名称（必需）
-- `remaining`: 剩余额度（必需）
-- `total`: 总额度（可选）
-- `used`: 已用额度（可选）
-- `unit`: 单位如 'CNY' / 'USD' / 'tokens'（必需）
-- `isValid`: 是否有效（有余额）（必需）
-- `invalidMessage`: 无效时的错误消息（可选）
-- `extra`: 额外详细信息字符串（可选）
+**执行环境**：extractor 函数在 QuickJS 沙箱环境中执行。注意事项：
+
+- 支持 ES2020+ 语法（可选链 `?.`、空值合并 `??` 等）
+- **不支持** Node.js API（如 `require`、`fs`、`path` 等）
+- **不支持** `toLocaleString` 的 locale 参数（QuickJS 为最小实现，效果等同于 `toString()`，不会添加千分位逗号）
+- 无法访问网络或文件系统，仅处理传入的 `response` 对象
+- 需要千分位格式化时，使用手动正则替换（参考 `fmtNumber` 实现）
+
+### Extractor 返回格式（所有字段均为可选）
+
+| 字段             | 类型    | 说明                                         |
+| ---------------- | ------- | -------------------------------------------- |
+| `isValid`        | boolean | 套餐是否有效                                 |
+| `invalidMessage` | string  | 失效原因说明（当 `isValid` 为 false 时显示） |
+| `remaining`      | number  | 剩余额度                                     |
+| `unit`           | string  | 单位（如 `"USD"`、`"CNY"`、`"tokens"`）      |
+| `planName`       | string  | 套餐名称                                     |
+| `total`          | number  | 总额度                                       |
+| `used`           | number  | 已用额度                                     |
+| `extra`          | string  | 扩展字段，可自由补充需要展示的文本           |
 
 ## Platform Classification
 
@@ -60,7 +73,7 @@ getFilteredDataList(filterType = 0, items = usageDataList)
 // filterType: 0=不过滤，1=过滤零余额（保底保留），2=严格过滤
 ```
 
-这些函数可在 extractor 中复用，避免重复实现。
+这些函数为各脚本中内联实现的参考模板，新增脚本时可参考复制，避免重复编写。
 
 ## Response Format Reference
 
@@ -76,8 +89,8 @@ getFilteredDataList(filterType = 0, items = usageDataList)
 ## File Naming Conventions
 
 - 英文版本后缀 `-en.js`（如 `Kimi/index-en.js`）
-- 同一平台的不同查询类型用独立文件（如 `Zhipu-GLM/index.js` 余额 + `resource-package.js` 资源包）
+- 同一平台的不同查询类型用独立文件（如 `Zhipu-GLM/index.js` 余额 + `Zhipu-GLM/resource-package.js` 资源包）
 
 ## Testing
 
-测试脚本位于 `temp/` 目录，通过模拟 HTTP 请求验证 extractor 逻辑。
+测试脚本可放置于 `temp/` 目录（已 gitignore），通过模拟 HTTP 请求验证 extractor 逻辑。

@@ -46,7 +46,7 @@
     // 枚举值 → 显示标签映射
     const LABEL_MAP = {
       name: {
-        plan_total_token: 'Max 月度套餐',
+        plan_total_token: 'Max 月度套餐', // 可以填自己的套餐名称，这里填的是 Max 月度套餐，根据实际情况修改
         compensation_total_token: '补偿积分',
       },
     }

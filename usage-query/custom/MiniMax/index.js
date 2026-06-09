@@ -1,4 +1,4 @@
-// MiniMax (余额) 查询脚本
+// MiniMax 余额查询脚本
 // 参考官网页面: https://platform.minimaxi.com/console/recharge-records
 // [请求: query_balance]
 ;({
@@ -20,7 +20,7 @@
       return {
         isValid: false,
         invalidMessage: errorMessage,
-        planName: 'MiniMax (余额)',
+        planName: 'MiniMax',
         extra: errorMessage,
       }
     }
@@ -44,7 +44,7 @@
       `现金：${cash_balance}，代金券：${voucher_balance}，授信：${credit_balance}，欠费：${owed_amount}。`
 
     return {
-      planName: 'MiniMax (余额)',
+      planName: 'MiniMax',
       remaining,
       total: undefined,
       used: undefined,
