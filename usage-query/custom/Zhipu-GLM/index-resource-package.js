@@ -31,10 +31,6 @@
 
     const { rows, total: totalPackageCount = 0 } = response
 
-    // 数量格式化：5000000 -> 默认逗号分隔（5,000,000 tokens），compact 模式缩写（5M tokens）
-    // QuickJS 的 toLocaleString —— 它是个最小实现，不支持 locale 参数，效果等于 toString()，不会加逗号。
-    // Math.round(n).toLocaleString('en-US')
-    // 使用 toString 方法并手动添加千分位分隔符（逗号）
     const fmtNumber = (n, unit, { compact = false } = {}) => {
       const abs = Math.abs(n)
       const sign = n < 0 ? '-' : ''
