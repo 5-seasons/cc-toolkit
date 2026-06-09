@@ -22,12 +22,15 @@ AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余�
   },
   extractor(response) {
     // 解析响应，返回标准化的用量数据
-    return [/* 一个或多个套餐对象 */]
+    return [
+      /* 一个或多个套餐对象 */
+    ]
   },
 })
 ```
 
 Extractor 返回的每个套餐对象格式：
+
 - `planName`: 套餐名称（必需）
 - `remaining`: 剩余额度（必需）
 - `total`: 总额度（可选）
@@ -73,7 +76,7 @@ getFilteredDataList(filterType = 0, items = usageDataList)
 ## File Naming Conventions
 
 - 英文版本后缀 `-en.js`（如 `Kimi/index-en.js`）
-- 同一平台的不同查询类型用独立文件（如 `Zhipu-GLM/index.js` 余额 + `index-resource-package.js` 资源包）
+- 同一平台的不同查询类型用独立文件（如 `Zhipu-GLM/index.js` 余额 + `resource-package.js` 资源包）
 
 ## Testing
 
