@@ -1,6 +1,6 @@
 # CC Toolkit
 
-AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余额和资源包使用情况。脚本以 JavaScript 对象字面量表达式形式编写，由 cc-switch 在 QuickJS 沙箱环境中加载并执行。
+AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余额和资源包使用情况。脚本以 JavaScript 对象字面量表达式形式编写，由 [cc-switch](https://github.com/farion1231/cc-switch) 在 QuickJS 沙箱环境中加载并执行。
 
 ## 支持的平台
 
@@ -12,7 +12,7 @@ AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余�
 | [Kimi](https://platform.kimi.com/docs/api/balance)                                       | 可用余额、代金券、现金余额           | CNY       |
 | [Kimi (EN)](https://platform.kimi.ai/docs/api/balance)                                   | 可用余额、代金券、现金余额（国际版） | USD       |
 | [SiliconFlow](https://docs.siliconflow.com/cn/api-reference/userinfo/get-user-info)      | 总余额、剩余金额                     | CNY       |
-| [SiliconFlow (EN)](https://docs.siliconflow.com/cn/api-reference/userinfo/get-user-info) | 总余额、剩余金额（国际版）           | USD       |
+| [SiliconFlow (EN)](https://docs.siliconflow.com/en/api-reference/userinfo/get-user-info) | 总余额、剩余金额（国际版）           | USD       |
 | [OpenRouter](https://openrouter.ai/docs/api/api-reference/credits/get-credits)           | 积分余额、使用量                     | USD       |
 | [Novita AI](https://novita.ai/docs/api-reference/basic-get-user-balance)                 | 可用余额、现金、信用额度             | USD       |
 | [StepFun](https://platform.stepfun.com/docs/zh/api-reference/accounts/get)               | 可用余额、赠送、充值金额             | CNY       |
@@ -31,19 +31,27 @@ AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余�
 
 ```
 usage-query/
-├── official/           # 官方 API 接口查询脚本
-│   ├── DeepSeek/
+├── official/                    # 官方 API 接口查询脚本
+│   ├── DeepSeek/index.js
 │   ├── Kimi/
-│   ├── Novita-AI/
-│   ├── OpenRouter/
+│   │   ├── index.js             # 国内版
+│   │   └── index-en.js          # 国际版
+│   ├── Novita-AI/index.js
+│   ├── OpenRouter/index.js
 │   ├── SiliconFlow/
-│   └── StepFun/
-├── custom/             # 自定义接口查询脚本
-│   ├── MiniMax/
+│   │   ├── index.js             # 国内版
+│   │   └── index-en.js          # 国际版
+│   └── StepFun/index.js
+├── custom/                      # 非官方 / 逆向工程接口查询脚本
+│   ├── MiniMax/index.js
 │   ├── Xiaomi-MiMo/
+│   │   ├── index.js             # 余额
+│   │   └── token-plan.js        # 套餐用量
 │   └── Zhipu-GLM/
-├── utils.js            # 工具函数参考模板（各脚本内联实现）
-└── JSON_RESPONSE_EXAMPLES.js  # 各平台响应格式示例
+│       ├── index.js             # 余额
+│       └── resource-package.js  # 资源包
+├── utils.js                     # 工具函数参考模板（各脚本内联实现）
+└── JSON_RESPONSE_EXAMPLES.js    # 各平台响应格式示例
 ```
 
 ## 脚本规范
@@ -53,15 +61,15 @@ usage-query/
 ```js
 ;({
   request: {
-    url: '{{baseUrl}}/api/usage',
-    method: 'POST',
+    url: 'https://api.example.com/v1/balance',
+    method: 'GET',
     headers: {
       Authorization: 'Bearer {{apiKey}}',
       'User-Agent': 'cc-switch/1.0',
     },
   },
   extractor(response) {
-    // 解析响应，返回标准化的用量数据（所有字段均为可选）
+    // 解析响应，返回单个套餐对象或套餐对象数组（所有字段均为可选）
     return {
       planName: '套餐名称',
       remaining: 100,
@@ -76,8 +84,12 @@ usage-query/
 })
 ```
 
-- `{{apiKey}}` 和 `{{baseUrl}}` 会在运行时自动替换
-- extractor 在 QuickJS 沙箱中执行，支持 ES2020+ 语法，不支持 Node.js API
+- `{{apiKey}}` 会在运行时自动替换；多数脚本使用硬编码 URL，`{{baseUrl}}` 为可选占位符
+- Cookie 认证（Xiaomi MiMo）在 `request.headers` 中设置 `Cookie`，由 cc-switch 注入 Web 登录态
+- `extractor` 可返回**单个对象**（单套餐）或**对象数组**（多币种、多资源包、多套餐）
+- `extractor` 在 QuickJS 沙箱中执行，支持 ES2020+ 语法，不支持 Node.js API
+
+开发细节（工具函数、开发模式、命名约定、测试方法）见 [CLAUDE.md](CLAUDE.md)。
 
 ## License
 
