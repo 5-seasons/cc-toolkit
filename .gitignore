@@ -16,8 +16,13 @@ npm-debug.log*
 *.swo
 *~
 
-# Claude Code
-.claude/
+# AI 编码助手本地配置（仅忽略不纳入项目管理的）
+/.claude
+/.codex
+/.gemini
+# CLAUDE.md
+# AGENTS.md
+# GEMINI.md
 
 # 操作系统文件
 .DS_Store
