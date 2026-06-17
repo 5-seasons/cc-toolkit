@@ -22,6 +22,8 @@
 
     // Novita 金额单位为 0.0001 USD，需除以 10000 转为 USD
     const remaining = Number(availableBalance) / 10000
+    const total = undefined
+    const used = undefined
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（No balance remaining）'
     const baseStr =
@@ -34,8 +36,8 @@
     return {
       planName: 'Novita AI',
       remaining,
-      total: undefined,
-      used: undefined,
+      total,
+      used,
       unit: 'USD',
       isValid,
       invalidMessage,

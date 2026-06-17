@@ -21,7 +21,9 @@
       return baseStr ? `${baseStr}\n${responsePart}` : responsePart
     }
 
-    const remaining = total_credits - total_usage
+    const total = total_credits
+    const used = total_usage
+    const remaining = total - used
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '积分不足（No credits remaining）'
     const baseStr = `总积分：${total_credits}，总使用量：${total_usage}。`
@@ -29,8 +31,8 @@
     return {
       planName: 'OpenRouter',
       remaining,
-      total: total_credits,
-      used: total_usage,
+      total,
+      used,
       unit: 'USD',
       isValid,
       invalidMessage,

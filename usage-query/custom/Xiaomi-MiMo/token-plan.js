@@ -7,7 +7,9 @@
     url: 'https://platform.xiaomimimo.com/api/v1/tokenPlan/usage',
     method: 'GET',
     headers: {
-      Cookie: '',
+      Cookie: 
+      ''
+      ,
       'User-Agent': 'cc-switch/1.0',
     },
   },
@@ -26,10 +28,11 @@
 
     const rows = response?.data?.usage?.items || []
 
-    const fmtNumber = (n, unit, { compact = false } = {}) => {
+    const fmtNumber = (n, u, { compact = false } = {}) => {
       const abs = Math.abs(n)
       const sign = n < 0 ? '-' : ''
       let value
+
       if (compact) {
         if (abs >= 1e9) value = (abs / 1e9).toFixed(1).replace(/\.0$/, '') + 'B'
         else if (abs >= 1e6) value = (abs / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
@@ -40,7 +43,8 @@
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       }
-      return sign + value + (unit ? ` ${unit}` : '')
+
+      return sign + value + (u ? ` ${u}` : '')
     }
 
     // 枚举值 → 显示标签映射
@@ -64,9 +68,8 @@
     const usageDataList = rows.map((usageData, index) => {
       const { limit, name, percent, used } = usageData
 
-      const remaining = limit - used
       const total = limit
-      const unit = 'Credits'
+      const remaining = total - used
       const isValid = remaining > 0
       const invalidMessage = isValid
         ? undefined
@@ -82,7 +85,7 @@
         remaining,
         total,
         used,
-        unit,
+        unit: 'Credits',
         isValid,
         invalidMessage,
         extra: getExtraStr(baseStr, { showResponse: index === 0 }),

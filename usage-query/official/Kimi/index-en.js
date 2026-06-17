@@ -35,6 +35,8 @@
     }
 
     const remaining = available_balance
+    const total = undefined
+    const used = undefined
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（Insufficient Balance）'
     const baseStr = `可用余额：${available_balance}，代金券余额：${voucher_balance}，现金余额：${cash_balance}。`
@@ -42,8 +44,8 @@
     return {
       planName: 'Kimi (EN)',
       remaining,
-      total: undefined,
-      used: undefined,
+      total,
+      used,
       unit: 'USD',
       isValid,
       invalidMessage,

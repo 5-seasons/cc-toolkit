@@ -47,6 +47,8 @@
     }
 
     const remaining = balance
+    const total = undefined
+    const used = undefined
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（Insufficient Balance）'
     const baseStr =
@@ -57,8 +59,8 @@
     return {
       planName: 'Zhipu GLM',
       remaining,
-      total: undefined,
-      used: undefined,
+      total,
+      used,
       unit: 'CNY',
       isValid,
       invalidMessage,

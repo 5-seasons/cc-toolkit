@@ -20,6 +20,8 @@
     }
 
     const remaining = balance
+    const total = undefined
+    const used = undefined
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（Insufficient Balance）'
     const baseStr = `可用余额：${balance}，总赠送金额：${total_voucher_balance}，总充值金额：${total_cash_balance}。`
@@ -27,8 +29,8 @@
     return {
       planName: 'StepFun',
       remaining,
-      total: undefined,
-      used: undefined,
+      total,
+      used,
       unit: 'CNY',
       isValid,
       invalidMessage,

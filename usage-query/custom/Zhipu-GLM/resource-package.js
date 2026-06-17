@@ -31,10 +31,11 @@
 
     const { rows, total: totalPackageCount = 0 } = response
 
-    const fmtNumber = (n, unit, { compact = false } = {}) => {
+    const fmtNumber = (n, u, { compact = false } = {}) => {
       const abs = Math.abs(n)
       const sign = n < 0 ? '-' : ''
       let value
+
       if (compact) {
         if (abs >= 1e9) value = (abs / 1e9).toFixed(1).replace(/\.0$/, '') + 'B'
         else if (abs >= 1e6) value = (abs / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
@@ -45,9 +46,9 @@
           .toString()
           .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       }
-      return sign + value + (unit ? ` ${unit}` : '')
-    }
 
+      return sign + value + (u ? ` ${u}` : '')
+    }
     // 时间格式化： 2026-08-05T23:59:54 -> 2026-08-05 23:59:54
     const fmtTime = (t) => (t ? t.replace('T', ' ') : '无')
 
@@ -95,7 +96,7 @@
 
       const remaining = availableBalance
       const total = tokensMagnitude
-      const used = tokensMagnitude - remaining
+      const used = total - remaining
       const unit =
         resolveLabel(LABEL_MAP.consumeType, consumeType) ??
         resolveLabel(LABEL_MAP.tokenPurpose, tokenPurpose)

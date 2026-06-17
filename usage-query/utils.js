@@ -66,14 +66,36 @@ const getFilteredDataList = (filterType = 0, items = usageDataList) => {
   return nonZero
 }
 
-// 数量格式化：5000000 -> 默认逗号分隔（5,000,000 tokens），compact 模式缩写（5M tokens）
-// QuickJS 的 toLocaleString —— 它是个最小实现，不支持 locale 参数，效果等于 toString()，不会加逗号。
-// Math.round(n).toLocaleString('en-US')
-// 使用 toString 方法并手动添加千分位分隔符（逗号）
-const fmtNumber = (n, unit, { compact = false } = {}) => {
+/**
+ * 数量格式化
+ *
+ * @remarks QuickJS 的 toLocaleString 是最小实现，不支持 locale 参数，效果等于 toString()，不会加逗号。
+ * 因此使用 toString 方法并手动添加千分位分隔符（逗号），而非 Math.round(n).toLocaleString('en-US')。
+ *
+ * @param {number} n - 待格式化的数值（number 的简写）
+ * @param {string} [u] - 单位（unit 的简写，因脚本返回字段已含 unit，入参简写避免视觉重复），如 'CNY'、'USD'、'tokens'、'Credits'；为空则不追加
+ * @param {Object} [options] - 配置选项
+ * @param {boolean} [options.compact=false] - 是否使用缩写模式（K/M/B）
+ *
+ * @returns {string} 格式化后的字符串
+ *
+ * @example
+ * // 默认模式：逗号分隔
+ * fmtNumber(5000000, 'tokens')                                  // "5,000,000 tokens"
+ * fmtNumber(5000000)                                            // "5,000,000"
+ * fmtNumber(-1234.5, 'CNY')                                     // "-1,235 CNY"
+ *
+ * // compact 模式：缩写
+ * fmtNumber(5000000, 'tokens', { compact: true })               // "5M tokens"
+ * fmtNumber(1500000, undefined, { compact: true })              // "1.5M"
+ * fmtNumber(999, 'tokens', { compact: true })                   // "999 tokens"
+ * fmtNumber(1200000000, undefined, { compact: true })           // "1.2B"
+ */
+const fmtNumber = (n, u, { compact = false } = {}) => {
   const abs = Math.abs(n)
   const sign = n < 0 ? '-' : ''
   let value
+
   if (compact) {
     if (abs >= 1e9) value = (abs / 1e9).toFixed(1).replace(/\.0$/, '') + 'B'
     else if (abs >= 1e6) value = (abs / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
@@ -84,5 +106,6 @@ const fmtNumber = (n, unit, { compact = false } = {}) => {
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
   }
-  return sign + value + (unit ? ` ${unit}` : '')
+
+  return sign + value + (u ? ` ${u}` : '')
 }

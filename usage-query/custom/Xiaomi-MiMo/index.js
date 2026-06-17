@@ -7,7 +7,9 @@
     url: 'https://platform.xiaomimimo.com/api/v1/balance',
     method: 'GET',
     headers: {
-      Cookie: '',
+      Cookie: 
+      ''
+      ,
       'User-Agent': 'cc-switch/1.0',
     },
   },
@@ -37,15 +39,17 @@
     }
 
     const remaining = Number(balance)
+    const total = undefined
+    const used = undefined
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（Insufficient Balance）'
-    const baseStr = `余额：${balance}，赠送余额：${giftBalance}，现金余额：${cashBalance}，`
+    const baseStr = `余额：${balance}，赠送余额：${giftBalance}，现金余额：${cashBalance}。`
 
     return {
       planName: 'Xiaomi MiMo',
       remaining,
-      total: undefined,
-      used: undefined,
+      total,
+      used,
       unit: currency,
       isValid,
       invalidMessage,

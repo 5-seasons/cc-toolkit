@@ -25,6 +25,8 @@
       const { currency, total_balance, granted_balance, topped_up_balance } = usageData
 
       const remaining = Number(total_balance)
+      const total = undefined
+      const used = undefined
       const isValid = is_available && remaining > 0
       const invalidMessage = isValid ? undefined : '余额不足（Insufficient Balance）'
       const baseStr = `总的可用余额：${total_balance}，未过期的赠金余额：${granted_balance}，充值余额：${topped_up_balance}。`
@@ -32,8 +34,8 @@
       return {
         planName: currency, // 用币种名作为套餐名，展开后显示 "💰 CNY" / "💰 USD"
         remaining,
-        total: undefined,
-        used: undefined,
+        total,
+        used,
         unit: currency,
         isValid,
         invalidMessage,

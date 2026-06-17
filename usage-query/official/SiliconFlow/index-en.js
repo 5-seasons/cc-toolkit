@@ -34,6 +34,8 @@
     }
 
     const remaining = Number(totalBalance)
+    const total = undefined
+    const used = undefined
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（Insufficient Balance）'
     const baseStr = `总余额：${totalBalance}，剩余金额：${chargeBalance}，余额：${balance}。`
@@ -41,8 +43,8 @@
     return {
       planName: 'SiliconFlow (EN)',
       remaining,
-      total: undefined,
-      used: undefined,
+      total,
+      used,
       unit: 'USD',
       isValid,
       invalidMessage,
