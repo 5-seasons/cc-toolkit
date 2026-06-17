@@ -1,4 +1,4 @@
-// Zhipu GLM (资源包) 查询脚本
+// Zhipu GLM 资源包 查询脚本
 // 参考官网页面: https://bigmodel.cn/finance-center/resource-package/package-mgmt
 // [请求: my?pageNum=1&pageSize=10&filterEnabled=false]
 ;({
@@ -24,7 +24,7 @@
       return {
         isValid: false,
         invalidMessage: errorMessage,
-        planName: 'Zhipu GLM (资源包)',
+        planName: 'Zhipu GLM 资源包',
         extra: errorMessage,
       }
     }

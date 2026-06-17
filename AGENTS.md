@@ -35,8 +35,8 @@ extractor 在 QuickJS 沙箱执行，仅处理传入的 `response`：
 
 1. **单套餐**：返回单个对象
 2. **多币种**（DeepSeek）：遍历 `balance_infos`，返回数组
-3. **资源包**（Zhipu GLM）：遍历 `rows`，仅 `status='EFFECTIVE'`，返回数组
-4. **多套餐用量**（Xiaomi MiMo Token Plan）：遍历列表 + `getFilteredDataList` 过滤零余额，返回数组
+3. **资源包**（Zhipu GLM）：遍历 `rows`，用 `isValid` 标记 `status='EFFECTIVE'` 且有余额，返回数组
+4. **多套餐用量**（Xiaomi MiMo Token Plan）：遍历列表 + `getFilteredDataList`（默认不过滤，可按需传参过滤零余额），返回数组
 5. **枚举映射**：`LABEL_MAP` 转中文标签
 
 ## 参考文件
