@@ -1,0 +1,25 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{js,json}]
+indent_size = 2
+indent_style = space
+max_line_length = 100
+
+[*.md]
+# Markdown 通常不修剪尾部空格（因为两个空格代表换行）
+trim_trailing_whitespace = false
+
+# ================= 脚本文件（关键拆分） =================
+# Windows 批处理使用 CRLF
+[*.{bat,cmd,ps1}]
+end_of_line = crlf
+
+# Linux/Mac Shell 脚本必须使用 LF，否则在 Docker/CI 中会报错
+[*.sh]
+end_of_line = lf
