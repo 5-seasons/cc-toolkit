@@ -6,8 +6,9 @@
   request: {
     url: 'https://platform.xiaomimimo.com/api/v1/balance',
     method: 'GET',
+    // prettier-ignore
     headers: {
-      Cookie: 
+      Cookie:
       ''
       ,
       'User-Agent': 'cc-switch/1.0',
