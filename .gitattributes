@@ -1,6 +1,14 @@
 # 强制所有文本文件在仓库中存储为 LF，检出时也为 LF
 * text=auto eol=lf
 
+# 如果有 Windows 专用的批处理脚本，可以单独允许 CRLF（可选）
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Shell scripts
+*.sh text eol=lf
+
 # 明确指定二进制文件不进行换行符转换（防止图片/字体损坏）
 *.png binary
 *.jpg binary
@@ -12,8 +20,3 @@
 *.woff binary
 *.woff2 binary
 *.ttf binary
-
-# 如果有 Windows 专用的批处理脚本，可以单独允许 CRLF（可选）
-*.bat text eol=crlf
-*.cmd text eol=crlf
-*.ps1 text eol=crlf

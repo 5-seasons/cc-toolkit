@@ -27,7 +27,7 @@
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（No balance remaining）'
     const baseStr =
-      `可用余额：${availableBalance}，` +
+      `可用余额：${remaining}，` +
       `现金余额：${Number(cashBalance) / 10000}，` +
       `信用额度：${Number(creditLimit) / 10000}，` +
       `待费：${Number(pendingCharges) / 10000}，` +
