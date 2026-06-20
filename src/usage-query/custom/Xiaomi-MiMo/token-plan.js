@@ -1,4 +1,4 @@
-// Xiaomi MiMo Token Plan 套餐用量查询脚本
+// Xiaomi MiMo Token Plan 订阅套餐用量查询脚本
 // 参考官网页面: https://platform.xiaomimimo.com/console/plan-manage
 // [请求: usage]
 // ！！！需要 Web 登录态（Cookie），不接受 API Key
