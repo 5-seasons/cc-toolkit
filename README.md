@@ -127,4 +127,4 @@ node scripts/raw-fetch.js https://api.deepseek.com/user/balance -k sk-xxx
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) © 5-seasons
