@@ -328,6 +328,23 @@ response = {
   total_voucher_balance: 14.94,
 }
 
+// StepFun en
+response = {
+  object: 'account',
+  type: 'prepaid',
+  balance: 0.0,
+  total_cash_balance: 0.0,
+  total_voucher_balance: 26.0,
+}
+
+response = {
+  object: 'account',
+  type: 'prepaid',
+  balance: 0,
+  total_cash_balance: 0,
+  total_voucher_balance: 0,
+}
+
 // SiliconFlow
 response = {
   code: 20000,

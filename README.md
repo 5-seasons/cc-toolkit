@@ -18,6 +18,7 @@ AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余�
 | [OpenRouter](https://openrouter.ai/docs/api/api-reference/credits/get-credits)           | 积分余额、使用量                     | USD       |
 | [Novita AI](https://novita.ai/docs/api-reference/basic-get-user-balance)                 | 可用余额、现金、信用额度             | USD       |
 | [StepFun](https://platform.stepfun.com/docs/zh/api-reference/accounts/get)               | 可用余额、赠送、充值金额             | CNY       |
+| [StepFun (EN)](https://platform.stepfun.ai/docs/en/api-reference/accounts/get)           | 可用余额、赠送、充值金额（国际版）   | USD       |
 
 ### 自定义接口
 
@@ -51,7 +52,9 @@ src/
 │   │   ├── SiliconFlow/
 │   │   │   ├── index.js           # 国内版
 │   │   │   └── index-en.js        # 国际版
-│   │   └── StepFun/index.js
+│   │   └── StepFun/
+│   │       ├── index.js           # 国内版
+│   │       └── index-en.js        # 国际版
 │   ├── custom/                    # 非官方 / 逆向工程接口查询脚本
 │   │   ├── MiniMax/index.js
 │   │   ├── Xiaomi-MiMo/

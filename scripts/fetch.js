@@ -46,6 +46,7 @@ const PLATFORMS = {
   'novita':              'official/Novita-AI/index.js',
   'novita-ai':           'official/Novita-AI/index.js',
   'stepfun':             'official/StepFun/index.js',
+  'stepfun-en':          'official/StepFun/index-en.js',
   'minimax':             'custom/MiniMax/index.js',
   'xiaomi-mimo':         'custom/Xiaomi-MiMo/index.js',
   'xiaomi-mimo-plan':    'custom/Xiaomi-MiMo/token-plan.js',
