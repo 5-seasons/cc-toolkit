@@ -12,6 +12,8 @@ npm-debug.log*
 
 # 编辑器和 IDE
 /.vscode/*
+/.trae/*
+/.cursor/*
 /.idea/*
 *.swp
 *.swo
@@ -31,6 +33,7 @@ npm-debug.log*
 
 # 重新纳入 settings.json（必须写在对应的忽略规则之后）
 !/.claude/settings.json
+!/.claude/skills/
 
 # 操作系统文件
 .DS_Store
