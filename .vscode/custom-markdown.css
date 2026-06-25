@@ -1,0 +1,14 @@
+/* 取消 Markdown 预览中代码注释的斜体 */
+.hljs-comment,
+.hljs-quote {
+  /* color: #57a64a; */
+  font-style: normal;
+}
+
+/* .hljs-emphasis {
+  font-style: italic;
+} */
+
+/* .vscode-light .hljs-emphasis {
+  font-style: italic;
+} */

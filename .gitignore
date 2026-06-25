@@ -22,6 +22,7 @@ npm-debug.log*
 # 重新纳入 VSCode 配置文件（必须写在对应的忽略规则之后）
 !/.vscode/settings.json
 !/.vscode/extensions.json
+!/.vscode/custom-markdown.css
 
 # AI 编码助手本地配置（仅忽略不纳入项目管理的）
 /.claude/*
