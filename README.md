@@ -35,40 +35,40 @@ AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余�
 ## 项目结构
 
 ```
-scripts/                           # 本地开发辅助脚本（Node.js 18+）
-├── fetch.js                       # 余额查询（加载平台脚本 + 发请求 + 格式化输出）
-└── raw-fetch.js                   # 裸 fetch 调试工具（轻量 curl 替代品）
-.node-version                      # Node.js 版本锁定
-.env                               # 非敏感默认配置（PLATFORM、URL），提交到 git
-.env.example                       # 敏感配置模板（API_KEY、COOKIE），复制为 .env.local 使用
+scripts/                                # 本地开发辅助脚本（Node.js 18+）
+├── fetch.js                            # 余额查询（加载平台脚本 + 发请求 + 格式化输出）
+└── raw-fetch.js                        # 裸 fetch 调试工具（轻量 curl 替代品）
+.node-version                           # Node.js 版本锁定
+.env                                    # 非敏感默认配置（PLATFORM、URL），提交到 git
+.env.example                            # 敏感配置模板（API_KEY、COOKIE），复制为 .env.local 使用
 
 src/
 ├── usage-query/
-│   ├── official/                  # 官方 API 接口查询脚本
+│   ├── official/                       # 官方 API 接口查询脚本
 │   │   ├── DeepSeek/index.js
 │   │   ├── Kimi/
-│   │   │   ├── index.js           # 国内版
-│   │   │   └── index-en.js        # 国际版
+│   │   │   ├── index.js                # 国内版
+│   │   │   └── index-en.js             # 国际版
 │   │   ├── Novita-AI/index.js
 │   │   ├── OpenRouter/index.js
 │   │   ├── SiliconFlow/
-│   │   │   ├── index.js           # 国内版
-│   │   │   └── index-en.js        # 国际版
+│   │   │   ├── index.js                # 国内版
+│   │   │   └── index-en.js             # 国际版
 │   │   └── StepFun/
-│   │       ├── index.js           # 国内版
-│   │       └── index-en.js        # 国际版
-│   ├── custom/                    # 非官方 / 逆向工程接口查询脚本
+│   │       ├── index.js                # 国内版
+│   │       └── index-en.js             # 国际版
+│   ├── custom/                         # 非官方 / 逆向工程接口查询脚本
 │   │   ├── MiniMax/index.js
 │   │   ├── Xiaomi-MiMo/
-│   │   │   ├── index.js           # 余额
-│   │   │   └── token-plan.js      # 套餐用量
+│   │   │   ├── index.js                # 余额
+│   │   │   └── token-plan.js           # 套餐用量
 │   │   └── Zhipu-GLM/
-│   │       ├── index.js           # 余额
-│   │       └── resource-package.js # 资源包
-│   ├── utils.js                   # 工具函数参考模板（各脚本内联实现）
-│   └── JSON_RESPONSE_EXAMPLES.js  # 各平台响应格式示例
+│   │       ├── index.js                # 余额
+│   │       └── resource-package.js     # 资源包
+│   ├── utils.js                        # 工具函数参考模板（各脚本内联实现）
+│   └── JSON_RESPONSE_EXAMPLES.js       # 各平台响应格式示例
 └── fetch-models/
-    └── JSON_RESPONSE_EXAMPLES.js  # 模型列表响应格式示例
+    └── JSON_RESPONSE_EXAMPLES.js       # 模型列表响应格式示例
 ```
 
 ## 本地查询
