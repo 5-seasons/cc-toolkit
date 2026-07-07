@@ -134,13 +134,13 @@ node scripts/raw-fetch.js https://api.deepseek.com/user/balance -k sk-xxx
 
 <a href="https://www.star-history.com/?repos=5-seasons%2Fcc-toolkit&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&theme=dark&legend=top-left&sealed_token=-TBeFjComdn8Jy8uchCCu9Vjryufy7pRUn--ISXiFn26ellWVDpHb5s7fPd37jALrCvEhd8hMRAFLZoy2zFJ4NrZsFvBf4Na5vbj_m_2SaWMGgEQWAk8retDRSt2nAlBllEIAf8e7ewb0IzjOfzoAVpHZZl09bOPlgoLbI6i_oSzTN2MNTQOtPUss1kQ" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&legend=top-left&sealed_token=-TBeFjComdn8Jy8uchCCu9Vjryufy7pRUn--ISXiFn26ellWVDpHb5s7fPd37jALrCvEhd8hMRAFLZoy2zFJ4NrZsFvBf4Na5vbj_m_2SaWMGgEQWAk8retDRSt2nAlBllEIAf8e7ewb0IzjOfzoAVpHZZl09bOPlgoLbI6i_oSzTN2MNTQOtPUss1kQ" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&legend=top-left&sealed_token=-TBeFjComdn8Jy8uchCCu9Vjryufy7pRUn--ISXiFn26ellWVDpHb5s7fPd37jALrCvEhd8hMRAFLZoy2zFJ4NrZsFvBf4Na5vbj_m_2SaWMGgEQWAk8retDRSt2nAlBllEIAf8e7ewb0IzjOfzoAVpHZZl09bOPlgoLbI6i_oSzTN2MNTQOtPUss1kQ" />
  </picture>
 </a>
 
-[//]: # '[![Star History Chart](https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&legend=top-left)](https://www.star-history.com/?repos=5-seasons%2Fcc-toolkit&type=date&legend=top-left)'
+[//]: # '[![Star History Chart](https://api.star-history.com/chart?repos=5-seasons/cc-toolkit&type=date&legend=top-left&sealed_token=-TBeFjComdn8Jy8uchCCu9Vjryufy7pRUn--ISXiFn26ellWVDpHb5s7fPd37jALrCvEhd8hMRAFLZoy2zFJ4NrZsFvBf4Na5vbj_m_2SaWMGgEQWAk8retDRSt2nAlBllEIAf8e7ewb0IzjOfzoAVpHZZl09bOPlgoLbI6i_oSzTN2MNTQOtPUss1kQ)](https://www.star-history.com/?repos=5-seasons%2Fcc-toolkit&type=date&legend=top-left)'
 
 ## License
 
