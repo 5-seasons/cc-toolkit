@@ -1,7 +1,7 @@
 // Xiaomi MiMo 余额查询脚本
 // 参考官网页面: https://platform.xiaomimimo.com/console/balance
 // [请求: balance]
-// ！！！需要 Web 登录态（Cookie），不接受 API Key
+// ！！！ 需要 Web 登录态（Cookie），不接受 API Key
 ;({
   request: {
     url: 'https://platform.xiaomimimo.com/api/v1/balance',
