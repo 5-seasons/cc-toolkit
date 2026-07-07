@@ -485,3 +485,36 @@ response = {
     },
   },
 }
+
+// PackyAPI（New API 框架，quota 单位：1 USD = 500000 额度）
+// 有余额：剩余 5 USD，已用 1 USD，总量 6 USD
+response = {
+  success: true,
+  message: '',
+  data: {
+    username: 'packyuser',
+    group: 'default',
+    request_count: 128,
+    quota: 2500000,
+    used_quota: 500000,
+  },
+}
+
+// 零余额
+response = {
+  success: true,
+  message: '',
+  data: {
+    username: 'packyuser',
+    group: 'default',
+    request_count: 256,
+    quota: 0,
+    used_quota: 0,
+  },
+}
+
+// 查询失败（Cookie 失效 / 无权限）
+response = {
+  success: false,
+  message: '无权进行此操作，access token 无效',
+}

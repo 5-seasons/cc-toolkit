@@ -31,6 +31,7 @@ AI 服务用量查询工具集，用于快速查询多家 AI 平台的账户余�
 | [Xiaomi MiMo Token Plan](https://platform.xiaomimimo.com/console/plan-manage)        | 套餐额度用量、补偿积分         | Cookie   |
 | [Zhipu GLM](https://bigmodel.cn/finance-center/finance/overview)                     | 当前余额、可用余额、信用余额   | API Key  |
 | [Zhipu GLM 资源包](https://bigmodel.cn/finance-center/resource-package/package-mgmt) | 资源包总量/已用/剩余、到期时间 | API Key  |
+| [PackyAPI](https://www.packyapi.com/console)                                         | 账户余额、剩余/已用额度        | Cookie   |
 
 ## 项目结构
 
@@ -59,6 +60,7 @@ src/
 │   │       └── index-en.js             # 国际版
 │   ├── custom/                         # 非官方 / 逆向工程接口查询脚本
 │   │   ├── MiniMax/index.js
+│   │   ├── PackyAPI/index.js           # 余额
 │   │   ├── Xiaomi-MiMo/
 │   │   │   ├── index.js                # 余额
 │   │   │   └── token-plan.js           # 套餐用量

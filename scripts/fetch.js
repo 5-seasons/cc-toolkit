@@ -53,6 +53,8 @@ const PLATFORMS = {
   'zhipu':               'custom/Zhipu-GLM/index.js',
   'zhipu-glm':           'custom/Zhipu-GLM/index.js',
   'zhipu-resource':      'custom/Zhipu-GLM/resource-package.js',
+  'packyapi':            'custom/PackyAPI/index.js',
+  'packy-api':           'custom/PackyAPI/index.js',
 }
 
 // ── 参数解析（CLI > env）───────────────────────────────────
