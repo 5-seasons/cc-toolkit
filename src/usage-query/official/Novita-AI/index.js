@@ -21,17 +21,18 @@
     }
 
     // Novita 金额单位为 0.0001 USD，需除以 10000 转为 USD
-    const remaining = Number(availableBalance) / 10000
+    const quotaUnit = 10000
+    const remaining = Number(availableBalance) / quotaUnit
     const total = undefined
     const used = undefined
     const isValid = remaining > 0
     const invalidMessage = isValid ? undefined : '余额不足（No balance remaining）'
     const baseStr =
       `可用余额：${remaining}，` +
-      `现金余额：${Number(cashBalance) / 10000}，` +
-      `信用额度：${Number(creditLimit) / 10000}，` +
-      `待费：${Number(pendingCharges) / 10000}，` +
-      `欠费：${Number(outstandingInvoices) / 10000}。`
+      `现金余额：${Number(cashBalance) / quotaUnit}，` +
+      `信用额度：${Number(creditLimit) / quotaUnit}，` +
+      `待费：${Number(pendingCharges) / quotaUnit}，` +
+      `欠费：${Number(outstandingInvoices) / quotaUnit}。`
 
     return {
       planName: 'Novita AI',
